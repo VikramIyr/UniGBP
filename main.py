@@ -17,8 +17,8 @@ from plotting               import TrajectoryPlotter, plot_trajectories, animate
 # ----------------------------------------
 # Simulation parameters
 # ----------------------------------------
-dt = 0.01
-T = 20.0
+dt = 0.02
+T = 5.0
 ts = np.arange(0, T, dt)
 horizon = len(ts) - 1
 
@@ -52,20 +52,19 @@ x0_2 = np.array([center_2[0] + r_2, center_2[0] + r_2, 0, 0])
 # ----------------------------------------
 # Line reference trajectory generation
 # ----------------------------------------
+# ref_traj_1 = generate_line_trajectory(
+#     start_pos=np.array([5.0, 0.1]),
+#     end_pos=np.array([-5.0, 0.1]),
+#     ts=ts
+# )
+# ref_traj_2 = generate_line_trajectory(
+#     start_pos=np.array([-5.0,  -0.1]),
+#     end_pos=np.array([5.0, -0.1]),
+#     ts=ts
+# )
 
-ref_traj_1 = generate_line_trajectory(
-    start_pos=np.array([5.0, 0.1]),
-    end_pos=np.array([-5.0, 0.1]),
-    ts=ts
-)
-ref_traj_2 = generate_line_trajectory(
-    start_pos=np.array([-5.0,  -0.1]),
-    end_pos=np.array([5.0, -0.1]),
-    ts=ts
-)
-
-x0_1 = np.array([5.0+1.0, 0.1+0.6, 0.0, 0.0])
-x0_2 = np.array([-5.0-0.4, -0.1-1.0, 0.0, 0.0])
+# x0_1 = np.array([5.0+1.0, 0.1+0.6, 0.0, 0.0])
+# x0_2 = np.array([-5.0-0.4, -0.1-1.0, 0.0, 0.0])
 
 # ----------------------------------------
 # GBP controller parameters
@@ -95,8 +94,56 @@ sigma_dynamics          = 1e-6  # Dynamics uncertainty: Small to prioritize mode
 sigma_collision         = 1e-4  # Increased: Make collision avoidance less rigid (was 1e-4)
 
 # ----------------------------------------
-# Create GBP controller
+# Create GBP controller without sensing
 # ----------------------------------------
+# Controller = GBPController(A=A,
+#                            B=B,
+#                            horizon=horizon,
+#                            dt=dt,
+#                            sigma_collision=sigma_collision,
+#                            robot_radius=robot_radius,
+#                            safety_eps=safety_eps,
+#                            settings=settings)
+
+# # Add agents to the controller
+# Controller.add_agent(Q=Q_gbp,
+#                      R=R_gbp,
+#                      S=Q_gbp,
+#                      ref_traj=ref_traj_1,
+#                      x0=x0_1,
+#                      sigma_0=sigma_0,
+#                      sigma_pos=sigma_pos,
+#                      sigma_vel=sigma_vel,
+#                      sigma_u=sigma_u,
+#                      sigma_dynamics=sigma_dynamics)
+
+# Controller.add_agent(Q=Q_gbp,
+#                      R=R_gbp,
+#                      S=Q_gbp,
+#                      ref_traj=ref_traj_2,
+#                      x0=x0_2,
+#                      sigma_0=sigma_0,
+#                      sigma_pos=sigma_pos,
+#                      sigma_vel=sigma_vel,
+#                      sigma_u=sigma_u,
+#                      sigma_dynamics=sigma_dynamics)
+
+# # Add the inter-agent collision factor
+# Controller.add_inter_agent_collision()
+
+# # Solve the GBP controller
+# x_list, u_list = Controller.solve(n_iters=10, converged_threshold=1e-3)
+
+# x_1, x_2 = x_list
+# u_1, u_2 = u_list
+
+# ----------------------------------------
+# Generate GBP controller with sensing
+# ----------------------------------------
+sigma_sensor    = 1e6   # Large sensor uncertainty to allow flexibility in sensing
+sigma_meas      = 1e-2
+
+
 Controller = GBPController(A=A,
                            B=B,
                            horizon=horizon,
@@ -106,38 +153,42 @@ Controller = GBPController(A=A,
                            safety_eps=safety_eps,
                            settings=settings)
 
-# Add agents to the controller
-Controller.add_agent(Q=Q_gbp,
-                     R=R_gbp,
-                     S=Q_gbp,
-                     ref_traj=ref_traj_1,
-                     x0=x0_1,
-                     sigma_0=sigma_0,
-                     sigma_pos=sigma_pos,
-                     sigma_vel=sigma_vel,
-                     sigma_u=sigma_u,
-                     sigma_dynamics=sigma_dynamics)
+Controller.add_agent_with_sensing(Q=Q_gbp,
+                                  R=R_gbp,
+                                  S=Q_gbp,
+                                  ref_traj=ref_traj_1,
+                                  x0=x0_1,
+                                  ts=ts,
+                                  sigma_0=sigma_0,
+                                  sigma_pos=sigma_pos,
+                                  sigma_vel=sigma_vel,
+                                  sigma_u=sigma_u,
+                                  sigma_sensor=sigma_sensor,
+                                  sigma_dynamics=sigma_dynamics,
+                                  sigma_meas=sigma_meas)
 
-Controller.add_agent(Q=Q_gbp,
-                     R=R_gbp,
-                     S=Q_gbp,
-                     ref_traj=ref_traj_2,
-                     x0=x0_2,
-                     sigma_0=sigma_0,
-                     sigma_pos=sigma_pos,
-                     sigma_vel=sigma_vel,
-                     sigma_u=sigma_u,
-                     sigma_dynamics=sigma_dynamics)
+Controller.add_agent_with_sensing(Q=Q_gbp,
+                                  R=R_gbp,
+                                  S=Q_gbp,
+                                  ref_traj=ref_traj_2,
+                                  x0=x0_2,
+                                  ts=ts,
+                                  sigma_0=sigma_0,
+                                  sigma_pos=sigma_pos,
+                                  sigma_vel=sigma_vel,
+                                  sigma_u=sigma_u,
+                                  sigma_sensor=sigma_sensor,
+                                  sigma_dynamics=sigma_dynamics,
+                                  sigma_meas=sigma_meas)
 
 # Add the inter-agent collision factor
 Controller.add_inter_agent_collision()
 
-# Solve the GBP controller
-x_list, u_list = Controller.solve(n_iters=10, converged_threshold=1e-3)
+# Solve the GBP controller with sensing
+x_list, u_list = Controller.solve_with_sensing(sigma_meas=sigma_meas)
 
 x_1, x_2 = x_list
 u_1, u_2 = u_list
-
 
 # ----------------------------------------------------------------------------------
 #                                   PLOTTING RESULTS                                  
