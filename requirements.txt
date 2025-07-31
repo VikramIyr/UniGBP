@@ -1,0 +1,16 @@
+# Core computation packages
+numpy>=1.21.0
+scipy>=1.7.0
+torch>=1.9.0
+
+# Plotting and visualization
+matplotlib>=3.5.0
+
+# For animation support (optional but recommended)
+# ffmpeg  # System dependency for MP4 export - install via: conda install ffmpeg
+
+# Python standard library packages (included by default):
+# - os
+# - time  
+# - random
+# - typing
