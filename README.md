@@ -1,1 +1,1 @@
-# Unified-Autonomy-Stack-via-Gaussian-Belief-Propagation
+# Unified Autonomy Stack via Gaussian Belief Propagation (GBP)
