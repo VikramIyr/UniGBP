@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Autonomy Stack via Gaussian Belief Propagation (GBP)</title>
+    <meta name="description" content="A multi-robot trajectory tracking and collision avoidance system using Gaussian Belief Propagation for distributed optimization and control.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">GBP Autonomy Stack</div>
+            <div class="nav-links">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#demos" class="nav-link">Demos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">Unified Autonomy Stack via<br><span class="highlight">Gaussian Belief Propagation</span></h1>
+                <p class="hero-subtitle">Multi-robot trajectory tracking and collision avoidance using distributed optimization for scalable coordination</p>
+                <div class="hero-buttons">
+                    <a href="#demos" class="btn btn-primary">View Demos</a>
+                    <a href="#overview" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Overview</h2>
+                <p class="section-subtitle">A unified framework for multi-robot coordination using Gaussian Belief Propagation</p>
+            </div>
+            <div class="overview-content">
+                <div class="overview-text">
+                    <p>This project implements a unified framework for multi-robot trajectory tracking with collision avoidance using Gaussian Belief Propagation. The system supports both traditional tracking and sensing-based adaptive control, making it suitable for real-time multi-robot coordination scenarios.</p>
+                    <p>Our approach leverages distributed optimization through GBP to achieve scalable coordination while maintaining safety constraints and trajectory tracking performance across multiple autonomous agents.</p>
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Robots Supported</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Collision Avoidance</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Real-time</div>
+                        <div class="stat-label">Performance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-subtitle">Advanced capabilities for multi-robot coordination and control</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Multi-Robot Tracking</h3>
+                    <p class="feature-description">Simultaneous control of multiple robots with reference trajectory following and adaptive coordination.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Collision Avoidance</h3>
+                    <p class="feature-description">Inter-robot collision avoidance with configurable safety margins and real-time constraint handling.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Gaussian Belief Propagation</h3>
+                    <p class="feature-description">Distributed optimization using GBP for scalable multi-robot coordination and efficient computation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3 class="feature-title">Sensing Integration</h3>
+                    <p class="feature-description">Optional sensor-based adaptive control for dynamic environments and obstacle detection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Advanced Visualization</h3>
+                    <p class="feature-description">Comprehensive plotting and animation tools for trajectory analysis and system monitoring.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Flexible Trajectories</h3>
+                    <p class="feature-description">Support for circular and linear reference trajectories with customizable parameters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">System Architecture</h2>
+                <p class="section-subtitle">Core components and control methods of the GBP autonomy stack</p>
+            </div>
+            <div class="architecture-content">
+                <div class="architecture-column">
+                    <h3 class="architecture-subtitle">Core Components</h3>
+                    <div class="component-list">
+                        <div class="component-item">
+                            <div class="component-name">GBP Controller</div>
+                            <div class="component-desc">Main control logic implementing GBP-based optimization</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">Trajectory Generator</div>
+                            <div class="component-desc">Reference trajectory generation utilities</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">Visualization Suite</div>
+                            <div class="component-desc">Comprehensive plotting and animation tools</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">GBP Core</div>
+                            <div class="component-desc">Low-level Gaussian belief propagation implementation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="architecture-column">
+                    <h3 class="architecture-subtitle">Control Methods</h3>
+                    <div class="method-list">
+                        <div class="method-item">
+                            <div class="method-icon">⚡</div>
+                            <div class="method-content">
+                                <div class="method-name">Distributed Optimization</div>
+                                <div class="method-desc">GBP-based consensus for multi-agent coordination</div>
+                            </div>
+                        </div>
+                        <div class="method-item">
+                            <div class="method-icon">🎯</div>
+                            <div class="method-content">
+                                <div class="method-name">Trajectory Tracking</div>
+                                <div class="method-desc">Reference following with adaptive control</div>
+                            </div>
+                        </div>
+                        <div class="method-item">
+                            <div class="method-icon">🔒</div>
+                            <div class="method-content">
+                                <div class="method-name">Safety Constraints</div>
+                                <div class="method-desc">Real-time collision avoidance and safety margins</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Videos Section -->
+    <section id="demos" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Demo Videos</h2>
+                <p class="section-subtitle">See the GBP autonomy stack in action with real-world demonstrations</p>
+            </div>
+            <div class="demos-grid">
+                <div class="demo-card">
+                    <div class="demo-video">
+                        <div class="video-placeholder">
+                            <div class="play-button">▶</div>
+                            <div class="video-overlay">
+                                <p>Multi-Robot Trajectory Tracking Demo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Multi-Robot Coordination</h3>
+                        <p class="demo-description">Demonstration of multiple robots following reference trajectories while avoiding collisions using GBP-based distributed optimization.</p>
+                        <div class="demo-stats">
+                            <span class="demo-stat">8 Robots</span>
+                            <span class="demo-stat">Real-time</span>
+                            <span class="demo-stat">3D Environment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-video">
+                        <div class="video-placeholder">
+                            <div class="play-button">▶</div>
+                            <div class="video-overlay">
+                                <p>Adaptive Sensing and Control Demo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Sensing-Based Adaptation</h3>
+                        <p class="demo-description">Showcase of sensor-based adaptive control with dynamic obstacle detection and real-time trajectory modification.</p>
+                        <div class="demo-stats">
+                            <span class="demo-stat">Dynamic Obstacles</span>
+                            <span class="demo-stat">Sensor Fusion</span>
+                            <span class="demo-stat">Adaptive Control</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GBP Autonomy Stack</h4>
+                    <p>Multi-robot trajectory tracking and collision avoidance using Gaussian Belief Propagation for distributed optimization and control.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Components</h4>
+                    <ul>
+                        <li>GBP Controller</li>
+                        <li>Trajectory Generator</li>
+                        <li>Visualization Suite</li>
+                        <li>GBP Core</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Multi-Robot Tracking</li>
+                        <li>Collision Avoidance</li>
+                        <li>Distributed Optimization</li>
+                        <li>Real-time Performance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GBP Autonomy Stack Research Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
